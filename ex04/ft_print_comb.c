@@ -1,19 +1,19 @@
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+
 void ft_units(int num)
 {
 	int zero;
 	int units;
 	units=0;
 	zero=0;
+
 	units=num+48;
 	zero=zero+48;
 	write(1,&zero,1);
 	write(1,&zero,1);
 	write(1,&units,1);
 }
-*void ft_tens(int num)
+void ft_tens(int num)
 {
 	int tens;
 	int units;
@@ -36,8 +36,8 @@ void ft_hundreds(int num)
 	int hundred;
 	int tens;
 	int units;
-	hundreds=0;
-	ten=0;
+	hundred=0;
+	tens=0;
 	units=0;
 
 	hundred=(num/100);
@@ -50,12 +50,52 @@ void ft_hundreds(int num)
 	write(1,&tens,1);
 	write(1,&units,1);
 }
+
+void ft_number(int num)
+{
+	if(num>=100)
+	{
+		ft_hundreds(num);
+	}
+	else
+	{
+		if((num>=10)&&(num<=99))
+		{
+			ft_tens(num);
+		}
+		else
+		{	
+			ft_units(num);	
+		}
+	}
+}
 void ft_print_comb(void)
 {
-			
+	int num;
+	int position;
+	position=3;
+	num=12;
+	int first_end;
+	first_end=num+7;
+	char m;
+	m=',';
+
+	while(num<=89)
+	{
+		ft_number(num);
+		write(1,&m,1);
+		if(num==first_end)
+		{
+			num=num+position;
+			position++;
+			first_end=first_end+10;
+		}
+		num++;
+	}
+		
 }
 int main()
 {
-	ft_units(8);
+	ft_print_comb();
 	return 0;
 }
