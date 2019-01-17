@@ -73,12 +73,12 @@ void ft_print_comb(void)
 {
 	int num;
 	int position;
-	position=3;
-	num=12;
 	int first_end;
-	first_end=num+7;
 	char m;
 	m=',';
+	position=3;
+	num=12;
+	first_end=num+7;
 
 	while(num<=89)
 	{
